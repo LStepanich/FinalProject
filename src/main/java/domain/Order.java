@@ -102,5 +102,5 @@ public class Order implements Serializable {
         this.cookId = cookId;
     }
 
-    private enum Status {ACCEPTED, IS_COOKING, COOCKED, ISSUED, PAID}
+
 }

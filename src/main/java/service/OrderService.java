@@ -2,7 +2,7 @@ package service;
 
 import domain.Order;
 import domain.OrderId;
-import org.aspectj.weaver.ast.Or;
+import domain.Status;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -30,6 +30,16 @@ public class OrderService {
         OrderId orderId = new OrderId(waiterID,tableID,menuID,dateTime);
         Order order = session.get(Order.class,orderId);
         return order;
+    }
+    public void create(Order order){
+        Session session = sessionFactory.getCurrentSession();
+        session.save(order);
+    }
+    public void changeStatus(OrderId orderId, Status status){
+        Session session = sessionFactory.getCurrentSession();
+        Order order = session.get(Order.class,orderId);
+        order.setStatus(status);
+        session.save(order);
     }
 
 }
