@@ -1,26 +1,31 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
+@IdClass(OrderId.class)
 @Table(name = "ORDER")
 public class Order implements Serializable {
+
+    @Id
     @Column(name = "WAITER_ID")
     private Integer waiterId;
 
+    @Id
     @Column(name = "TABLE_ID")
     private Integer tableID;
 
+    @Id
     @Column(name = "MENU_ID")
     private Integer menuID;
 
     @Column(name = "QUANTITY")
     private Integer quantity;
 
+    @Id
     @Column(name = "DATE_TIME")
     private LocalDateTime dateTime;
 
