@@ -32,12 +32,15 @@ public class OrderService {
     public void create(Order order) {
         Session session = sessionFactory.getCurrentSession();
         session.save(order);
+
+
     }
 
     public void changeStatus(OrderId orderId, Status status) {
         Session session = sessionFactory.getCurrentSession();
         Order order = session.get(Order.class, orderId);
         order.setStatus(status);
+        
         session.save(order);
     }
 
