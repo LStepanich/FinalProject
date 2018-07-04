@@ -25,19 +25,21 @@ public class OrderService {
         return query.list();
     }
 
-    public Order get(Integer waiterID, Integer tableID, Integer menuID, LocalDateTime dateTime){
+    public Order get(Integer waiterID, Integer tableID, Integer menuID, LocalDateTime dateTime) {
         Session session = sessionFactory.getCurrentSession();
-        OrderId orderId = new OrderId(waiterID,tableID,menuID,dateTime);
-        Order order = session.get(Order.class,orderId);
+        OrderId orderId = new OrderId(waiterID, tableID, menuID, dateTime);
+        Order order = session.get(Order.class, orderId);
         return order;
     }
-    public void create(Order order){
+
+    public void create(Order order) {
         Session session = sessionFactory.getCurrentSession();
         session.save(order);
     }
-    public void changeStatus(OrderId orderId, Status status){
+
+    public void changeStatus(OrderId orderId, Status status) {
         Session session = sessionFactory.getCurrentSession();
-        Order order = session.get(Order.class,orderId);
+        Order order = session.get(Order.class, orderId);
         order.setStatus(status);
         session.save(order);
     }

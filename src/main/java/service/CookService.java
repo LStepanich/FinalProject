@@ -16,25 +16,26 @@ public class CookService {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-    public List<Cook> getAll(){
+    public List<Cook> getAll() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("FROM Cook");
         return query.list();
 
     }
-    public Cook get(Integer id){
-        Session session= sessionFactory.getCurrentSession();
+
+    public Cook get(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
         Cook cook = (Cook) session.get(Cook.class, id);
         return cook;
     }
 
-    public void add (Cook cook){
-        Session session= sessionFactory.getCurrentSession();
+    public void add(Cook cook) {
+        Session session = sessionFactory.getCurrentSession();
         session.save(cook);
     }
 
-    public void delete(Integer id){
-        Session session= sessionFactory.getCurrentSession();
+    public void delete(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
         Cook cook = (Cook) session.get(Cook.class, id);
         session.delete(cook);
     }

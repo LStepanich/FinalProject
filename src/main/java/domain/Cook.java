@@ -5,17 +5,17 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="COOK")
+@Table(name = "COOK")
 public class Cook implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue
     private Integer id;
 
-    @Column(name= "LAST_NAME")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name ="FIRST_NAME")
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
     public Integer getId() {
